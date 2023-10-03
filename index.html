@@ -1,0 +1,376 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+    <script src="https://www.google.com/recaptcha/api.js?render=6LdfdK4ZAAAAAOTQRToXYGH_F8kRjnGAbipn3nop"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="icon" type="image/png" href="/favicon16-v2.png" sizes="16x16" />
+    <link rel="icon" type="image/png" href="/favicon32-v2.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="/favicon96-v2.png" sizes="96x96" />
+    <link rel="icon" type="image/png" href="/favicon180-v2.png" sizes="180x180" />
+    <style>
+     .grecaptcha-badge { visibility: hidden; }
+    </style>
+
+
+		    <script type="text/javascript">
+        if (window != window.top) {
+            window.top.location = window.location;
+        }</script>
+            <title> Fergus</title>
+
+                <script
+    src="https://browser.sentry-cdn.com/6.19.7/bundle.min.js"
+    integrity="sha384-KXjn4K+AYjp1cparCXazrB+5HKdi69IUYz8glD3ySH3fnDgMX3Wg6VTMvXUGr4KB"
+    crossorigin="anonymous"
+></script>
+<script>
+    Sentry.init({
+        dsn: "https://21797a13f80b48418b8dbefa88bb2f3e@o152602.ingest.sentry.io/1204860",
+        environment: "production",
+        release: "fergus@v1.93.53",
+        ignoreErrors: ["ResizeObserver loop limit exceeded"]
+    });
+
+    var addUserDetails = function (event) {
+        if (!event.detail || event.detail.type !== 'app/user/details/LOADED' || !event.detail.payload) {
+            return;
+        }
+
+        var data = event.detail.payload;
+        var details = {};
+
+        if (data.id) {
+            details.id = data.id
+        }
+
+        if (data.email) {
+            details.username = data.email
+        }
+
+        if (data.fullName) {
+            details.name = data.fullName
+        }
+
+        Sentry.setUser(details);
+
+        event.target.removeEventListener(event.type, addUserDetails);
+    }
+
+    window.addEventListener("dispatchReduxAction", addUserDetails);
+</script>
+<link href="https://static.fergusapp.com/build_v1/style-1fb69c842918.css" rel="stylesheet" type="text/css" /><script type="text/javascript" src="https://static.fergusapp.com/build_v1/framework-min-58bccda4480a.js"></script><script type="text/javascript" src="https://static.fergusapp.com/build_v1/scripts-min-f61910f72252.js"></script>
+<script type="text/javascript" src="https://static.fergusapp.com/build/vendor.dll.f2d5cfbf1324f2dc9452.js"></script><link href="https://static.fergusapp.com/build/0.6c986f45326d2229791f.css" rel="stylesheet" type="text/css" /><script type="text/javascript" src="https://static.fergusapp.com/build/v2common.b760e642ca6140d8c2ec.7e6d12f49dd90913e8b4.js"></script><link href="https://static.fergusapp.com/build/v2.3f3838a1b437367ebbb7.css" rel="stylesheet" type="text/css" /><script type="text/javascript" src="https://static.fergusapp.com/build/v2.b760e642ca6140d8c2ec.js"></script>
+<script>
+			fg_global.local_currency_format = "$ %s";
+				fg_global.local_iso_country_code = "AU";
+			</script>
+
+
+    
+<!-- Start of HubSpot Embed Code -->
+<!-- <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/22232950.js"></script> -->
+<!-- End of HubSpot Embed Code -->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-K757YNLD70"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-K757YNLD70');
+</script>
+
+<!-- Google Tag Manager -->
+<!-- <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-PPBLX5N');</script> -->
+<!-- End Google Tag Manager -->
+
+<script>
+    const companyGuid = "a6d03610-ee4e-4711-8655-3b996125c419";
+    const getDeviceProps = () => {
+        let deviceProps = {}
+        const analyticsParser = $.ua ?? window.ua
+
+        if (analyticsParser.device.model) {
+            deviceProps['Device Model'] = analyticsParser.device.model;
+        }
+        deviceProps['Device Manufacturer'] = analyticsParser.device.type ?? 'desktop'
+        if (window.screen.width) {
+            deviceProps['Screen Width'] = window.screen.width;
+        }
+        if (window.screen.height) {
+            deviceProps['Screen Height'] = window.screen.height;
+        }
+
+        return deviceProps;
+    }
+
+    const getPageProps = (url) => {
+        const additionalProps = {}
+        if(url === '/dashboard') {
+            additionalProps.dashboard_number_of_jobs_displayed = parseInt(localStorage.getItem('fg_dashboard_page_size')) || 10
+        }
+        return {...getDeviceProps(), 'company_id': companyGuid, 'path': url, ...additionalProps};
+    }
+
+    const trackedRoutes = {"\/settings":["\/settings\/check_list_builder\/edit\/*","\/settings\/forms\/edit\/*","\/settings\/user\/*\/user_details","\/settings\/user\/*\/personal_details","\/settings\/user\/*\/notifications","\/settings\/user\/*\/settings","\/settings\/user\/*\/employee_pay","\/settings\/user\/*\/permissions","\/settings\/group\/*","\/settings\/*"],"\/reports":["\/reports\/high_performance","\/reports\/business_overview","\/reports\/business_activity","\/reports\/customer_invoice_report","\/reports\/customer_invoices\/invoices_due","\/reports\/supplier_document_report","\/reports\/fergus_pay","\/reports\/quote_report","\/reports\/employee_overview","\/reports\/compliance_report","\/reports\/pay_summary","\/reports\/staff_overview","\/reports\/timesheet_summary","\/reports\/timesheet","\/reports\/wip_report","\/reports\/actual_report","\/reports\/customer_source_report","\/reports\/certification_report","\/reports\/recurring_jobs"],"\/onboarding":["\/onboarding"],"\/location":["\/location\/map","location\/map\/*","\/location\/new_map"],"\/dashboard":["\/dashboard"],"\/first-step":["\/first-step"],"\/search":["search\/all"],"\/customer":["\/customers","\/customer\/view\/*","\/customer\/report\/*"],"\/sites":["\/sites","\/sites\/site\/*\/contacts","\/sites\/site\/*\/address","\/sites\/site\/*\/jobs","\/sites\/site\/*\/history","\/sites\/site\/*\/files","\/sites\/site\/*"],"\/jobs":["\/jobs\/newjob","\/jobs\/view\/*\/summary","\/jobs\/view_template\/*","\/jobs\/view\/*\/project_summary","\/jobs\/view\/*\/project_history","\/jobs\/view\/*\/quote\/*\/versions","\/jobs\/view\/*\/quote\/*\/scheduling","\/jobs\/view\/*\/quote\/*\/purchases","\/jobs\/view\/*\/quote","\/jobs\/view\/*\/safety","\/jobs\/view\/*\/invoicing\/*","\/jobs\/view\/*\/invoicing","\/jobs\/view\/*\/tasks","\/jobs\/view\/*\/project_gallery","\/jobs\/view\/*\/certificates","\/jobs\/view\/*\/sign_off","\/jobs\/view\/*\/checklists","\/jobs\/view\/*\/forms","\/jobs\/view\/*\/actuals_report","\/jobs\/view\/*\/reconciliation","\/jobs\/view\/*\/purchase_orders","\/jobs\/view\/*\/site_visit\/*\/scheduling","\/jobs\/view\/*\/site_visit\/*\/labour","\/jobs\/view\/*\/site_visit\/*\/purchases","\/jobs\/view\/*\/site_visit\/*\/orders","\/jobs\/view\/*\/site_visit\/*\/stock_on_hand","\/jobs\/quick\/quote","\/jobs\/quick\/estimate","\/jobs\/quick\/invoice","\/jobs\/*"],"\/safety":["\/safety\/compliance_report","\/safety"],"\/calendar":["\/calendar"],"\/received_merchant_documents":["\/received_merchant_documents\/process_documents"],"\/customer_invoices":["\/customer_invoices\/invoices_due","\/customer_invoices"]};
+
+    const is_tracked = function (path, trackedRoutes) {
+        for (let route in trackedRoutes) {
+            if (path.indexOf(route) === 0) {
+                for (let sub_route of trackedRoutes[route]) {
+                    let regex = new RegExp(sub_route.replaceAll('*', '[A-Za-z0-9_-]+'))
+                    if (regex.test(path)) {
+                        return sub_route;
+                    }
+                }
+                return false;
+            }
+        }
+        return false;
+    }
+
+    !function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware"];analytics.factory=function(e){return function(){var t=Array.prototype.slice.call(arguments);t.unshift(e);analytics.push(t);return analytics}};for(var e=0;e<analytics.methods.length;e++){var key=analytics.methods[e];analytics[key]=analytics.factory(key)}analytics.load=function(key,e){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n);analytics._loadOptions=e};analytics._writeKey="0RjhaDyf3NjEsc1ljdy3tCXfMaZkvTgy";;analytics.SNIPPET_VERSION="4.15.3";
+        analytics.load("WpTxPAryCsIDwflgFURXESo7zwHu1DYH");
+        analytics.identify("fda49108-9f60-41a5-9ee1-68a46a2ca3b9",
+            {"user_type":4}        );
+                        let path = window.location.pathname;
+        let url = is_tracked(path, trackedRoutes);
+
+        if (url) {
+            let now = (new Date()).getTime();
+            let lastTrackedTime = window.sessionStorage.getItem('LastTrackedTime') ?? 0;
+            let lastTrackedPath = window.sessionStorage.getItem('LastTrackedPath');
+            let buffer = 10 * 1000; // Only send page track event if last event was > 10 seconds ago
+
+            if ((now - lastTrackedTime) > buffer || lastTrackedPath != path) {
+                window.sessionStorage.setItem('LastTrackedTime', now);
+                window.sessionStorage.setItem('LastTrackedPath', path);
+
+                analytics.page( getPageProps(url) );
+            }
+        }
+
+        // use mutation observer to check changes in pathname
+        let lastPathname = window.location.pathname;
+        new MutationObserver(() => {
+            const newPathname = window.location.pathname;
+            if (newPathname !== lastPathname){
+                lastPathname = newPathname;
+                let url = is_tracked(newPathname, trackedRoutes);
+
+                if (url) {
+                    let now = (new Date()).getTime();
+
+                    window.sessionStorage.setItem('LastTrackedTime', now);
+                    window.sessionStorage.setItem('LastTrackedPath', newPathname);
+                    window.analytics.page( getPageProps(url) );
+                }
+            }
+        }).observe(document, {subtree: true, childList: true});
+    }}();
+
+        // Hotjar
+    (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:"1060813",hjsv:6};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+
+    if (window.hj) {
+        window.hj(
+            'identify',
+            "fda49108-9f60-41a5-9ee1-68a46a2ca3b9",
+            {"user_type":4}        );
+    }
+    </script>
+
+<link href="https://static.fergusapp.com/js/select2/select2.css" rel="stylesheet">
+<link href="https://static.fergusapp.com/js/select2/select2-bootstrap.css" rel="stylesheet">
+<script src="https://static.fergusapp.com/js/select2/select2.js"></script>
+
+<link href="https://static.fergusapp.com/js/timepicker/jquery.timepicker.css" rel="stylesheet">
+<script src="https://static.fergusapp.com/js/timepicker/jquery.timepicker.min.js"></script>
+
+<link href="https://static.fergusapp.com/js/datepicker/bootstrap-datepicker3.min.css" rel="stylesheet">
+<script src="https://static.fergusapp.com/js/datepicker/bootstrap-datepicker.min.js"></script>
+
+<script src="https://static.fergusapp.com/js/daterangepicker/daterangepicker.js" type="text/javascript"></script>
+
+<script async src="https://static.fergusapp.com/js/min/emojione.min.js"></script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAojlLF-20ag1BClayE2qlcQb4nzSOeevQ&v=3.exp&libraries=places"></script>
+        <!--fragment #parcel-includes-head|v2023-09-12.024558 [start]-->
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/3.8.3/minified.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/regenerator-runtime@0.13.5/runtime.min.js"></script>
+<script>window.__isOldBrowser__=!1,"undefined"==typeof Promise&&(window.__isOldBrowser__=!0,document.write('<script src="https://unpkg.com/bluebird@3.7.2/js/browser/bluebird.core.min.js"><\/script>')),"undefined"==typeof fetch&&(window.__isOldBrowser__=!0,document.write('<script src="https://unpkg.com/whatwg-fetch@3.4.1/dist/fetch.umd.js"><\/script>'))</script>
+<!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: localhost:*; script-src 'unsafe-inline' https: localhost:*; connect-src https: localhost:* ws://localhost:*; style-src 'unsafe-inline' https:; object-src 'none';"> -->
+<meta name="importmap-type" content="systemjs-importmap">
+<meta name="import-map-overrides-domains" content="denylist:app.fergus.com">
+<script type="systemjs-importmap">
+{"imports":{"single-spa":"https://cdn.jsdelivr.net/npm/single-spa@5.9.1/lib/system/single-spa.min.js","react":"https://cdn.jsdelivr.net/npm/react@16.14.0/umd/react.production.min.js","react-dom":"https://cdn.jsdelivr.net/npm/react-dom@16.14.0/umd/react-dom.production.min.js","react-router-dom":"https://cdn.jsdelivr.net/npm/react-router-dom@5.3.0/umd/react-router-dom.min.js","rxjs":"https://cdn.jsdelivr.net/npm/rxjs@6.6.7/bundles/rxjs.umd.min.js","@fergus-software/mfe-environment":"https://mfe.fergus.com/mfe-deployment/2023-09-12.024558/fergus-software-mfe-environment.js","@fergus-software/root-config":"https://mfe.fergus.com/root-config/v2.0.0/fergus-software-root-config.js","@fergus-software/mfe-utils":"https://mfe.fergus.com/mfe-utils/v2.0.1/fergus-software-mfe-utils.js","@fergus-software/mfe-components":"https://mfe.fergus.com/mfe-components/v1.2.0/fergus-software-mfe-components.js","@fergus-software/mfe-sentry":"https://mfe.fergus.com/mfe-sentry/v1.0.2/fergus-software-mfe-sentry.js","@fergus-software/styleguide":"https://mfe.fergus.com/styleguide/v1.0.2/fergus-software-styleguide.js","@fergus-software/mfe-auth-service":"https://mfe.fergus.com/mfe-auth-service/v1.3.24/fergus-software-mfe-auth-service.js","@fergus-software/mfe-intercom":"https://mfe.fergus.com/mfe-intercom/v1.0.3/fergus-software-mfe-intercom.js","@fergus-software/authentication":"https://mfe.fergus.com/authentication/v1.10.0/fergus-software-authentication.js","@fergus-software/mfe-forms-library":"https://mfe.fergus.com/mfe-forms-library/v1.0.3/fergus-software-mfe-forms-library.js","@fergus-software/mfe-accounting-ui":"https://mfe.fergus.com/mfe-accounting-ui/v1.0.52/fergus-software-mfe-accounting-ui.js"},"scopes":{},"integrity":{"https://cdn.jsdelivr.net/npm/single-spa@5.9.1/lib/system/single-spa.min.js":"sha256-2p4lwQ9F64x/r2LPwEPqOs21GvQCrbVYxXEWo7XRNwo=","https://cdn.jsdelivr.net/npm/react@16.14.0/umd/react.production.min.js":"sha256-XO+TZ9K8q6JbdNIODhOdLPkA6RI+X94mEBruf0D2tc8=","https://cdn.jsdelivr.net/npm/react-dom@16.14.0/umd/react-dom.production.min.js":"sha256-SUn04c/56KlgtEyai+cLxLsQIW600BI8phdT4JCKD4c=","https://cdn.jsdelivr.net/npm/react-router-dom@5.3.0/umd/react-router-dom.min.js":"sha256-I0lqha3+QgCa3BvoOLhEtbizixHWhYdgB10ULp90zy8=","https://cdn.jsdelivr.net/npm/rxjs@6.6.7/bundles/rxjs.umd.min.js":"sha256-mbzINdjdIRwkAi7royyVyxUPILvHbZ3/ae5pyxNAR8c=","https://mfe.fergus.com/root-config/v2.0.0/fergus-software-root-config.js":"sha256-ENZhiSDGyTqqMTrvQkunRCvO6zJ+fxuhGOx8eBtWK24=","https://mfe.fergus.com/mfe-utils/v2.0.1/fergus-software-mfe-utils.js":"sha256-M6WbkFGISukII9T57JqJG5AAHpgHioxQ4c8QyFMW0dg=","https://mfe.fergus.com/mfe-components/v1.2.0/fergus-software-mfe-components.js":"sha256-ekln7S956OqCiQGHIxUpxwEYo6ILIb1648V4Ar/a/8U=","https://mfe.fergus.com/mfe-sentry/v1.0.2/fergus-software-mfe-sentry.js":"sha256-yk9J0cW9NxWSIiMOD3qi6PbvQCV/u484wz2+3pUyz2M=","https://mfe.fergus.com/styleguide/v1.0.2/fergus-software-styleguide.js":"sha256-BAHe0WKTm6TTOcHZzzxLV9SNmohLl4Qx0GiQERE/hd0=","https://mfe.fergus.com/mfe-auth-service/v1.3.24/fergus-software-mfe-auth-service.js":"sha256-EhJYb5ufXyksNacmpE2JSJdkOPpLGXRk/TEuB45VsDk=","https://mfe.fergus.com/mfe-intercom/v1.0.3/fergus-software-mfe-intercom.js":"sha256-bwfqToIFxJcYeKYOW7wDqK8lo7vyYe64TWFP6xjlx2U=","https://mfe.fergus.com/authentication/v1.10.0/fergus-software-authentication.js":"sha256-2hv/XsyTa6SrQrYE/YSZhXZKnSP+wNFUDMSzmhbbbus=","https://mfe.fergus.com/mfe-forms-library/v1.0.3/fergus-software-mfe-forms-library.js":"sha256-c4zkhFt16O0HsLh3mtuNUfUpLzgPXs4loH7YWQMvfwM=","https://mfe.fergus.com/mfe-accounting-ui/v1.0.52/fergus-software-mfe-accounting-ui.js":"sha256-s6lJJWMhsUsBFvlpwh8aNp5Fouvee7oiNpeMVFEo8d0="}}
+</script>
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/single-spa@5.9.1/lib/system/single-spa.min.js" as="script" crossorigin="anonymous" integrity="sha256-2p4lwQ9F64x/r2LPwEPqOs21GvQCrbVYxXEWo7XRNwo=">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/react@16.14.0/umd/react.production.min.js" as="script" crossorigin="anonymous" integrity="sha256-XO+TZ9K8q6JbdNIODhOdLPkA6RI+X94mEBruf0D2tc8=">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/react-dom@16.14.0/umd/react-dom.production.min.js" as="script" crossorigin="anonymous" integrity="sha256-SUn04c/56KlgtEyai+cLxLsQIW600BI8phdT4JCKD4c=">
+<link rel="preload" href="https://mfe.fergus.com/root-config/v2.0.0/fergus-software-root-config.js" as="script" crossorigin="anonymous" integrity="sha256-ENZhiSDGyTqqMTrvQkunRCvO6zJ+fxuhGOx8eBtWK24=">
+<link rel="preload" href="https://mfe.fergus.com/styleguide/v1.0.2/fergus-software-styleguide.js" as="script" crossorigin="anonymous" integrity="sha256-BAHe0WKTm6TTOcHZzzxLV9SNmohLl4Qx0GiQERE/hd0=">
+<script type="systemjs-importmap">
+{
+    "imports": {
+      "@fergus-software/mfe-environment": "https://mfe.fergus.com/mfe-deployment/alias_production/fergus-software-mfe-environment.js"
+    }
+  }
+</script>
+<link rel="preload" href="https://mfe.fergus.com/mfe-deployment/alias_production/fergus-software-mfe-environment.js" as="script" crossorigin="anonymous" integrity="">
+<script src="https://cdn.jsdelivr.net/npm/systemjs@6.8.3/dist/system.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/systemjs@6.8.3/dist/extras/amd.js"></script>
+<!--fragment #parcel-includes-head|v2023-09-12.024558 [end]-->	<!--fragment #analytics-includes|v2023-09-12.024558 [start]--><script>!function(e,t,a,n){e[n]=e[n]||[],e[n].push({"gtm.start":(new Date).getTime(),event:"gtm.js"});e=t.getElementsByTagName(a)[0],n=t.createElement(a);n.defer=!0,n.src="https://www.googletagmanager.com/gtm.js?id=GTM-5223GT7",e.parentNode.insertBefore(n,e)}(window,document,"script","dataLayer")</script><script>!function(e,a,t,n,g,i){e.GoogleAnalyticsObject=n,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=+new Date,g=a.createElement(t),i=a.getElementsByTagName(t)[0],g.defer=1,g.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(g,i)}(window,document,"script","ga"),ga("create","UA-33784991-3","auto"),ga("set","dimension1","0001"),ga(function(e){e=e.get("clientId");ga("set","dimension2",e)}),ga("send","pageview")</script><!--fragment #analytics-includes|v2023-09-12.024558 [end]--></head>
+<body tabindex="-1" class="textured has-navbar   ">
+    
+<input type="hidden" name="csrf_rp_tok" value="3e0be3dbcd873c826f056a504e14f51f" />
+
+
+<script>
+
+	initStore({"appEnvironment":{"csrfToken":"3e0be3dbcd873c826f056a504e14f51f","isOnDemo":false,"jobStatus":[{"id":14,"statusName":"Active"},{"id":6,"statusName":"Completed"},{"id":15,"statusName":"Estimate Sent"},{"id":16,"statusName":"Estimate Rejected"},{"id":17,"statusName":"Inactive"},{"id":11,"statusName":"Invoice Approved"},{"id":12,"statusName":"Invoice Queried"},{"id":13,"statusName":"Invoice Paid"},{"id":19,"statusName":"Invoiced"},{"id":18,"statusName":"Labour Complete"},{"id":8,"statusName":"Quote Sent"},{"id":9,"statusName":"Quote Rejected"},{"id":20,"statusName":"To Be Approved"},{"id":2,"statusName":"To Price"},{"id":3,"statusName":"To Schedule"},{"id":4,"statusName":"In Progress"},{"id":5,"statusName":"To Invoice"},{"id":10,"statusName":"To Start"},{"id":-1,"statusName":"Archived"}],"jobTypes":[{"id":5,"jobTypeName":"Charge Up"},{"id":2,"jobTypeName":"Estimate"},{"id":1,"jobTypeName":"Quote"}],"dateFormat":"D\/M\/Y","accountingCountryCodeWhiteListMap":{"quickbooks":["AU","GB","GG","IM","JE"],"myob":["AU","NZ"]}},"appFeatures":{"useWebNotifications":false,"useSearchV2":false,"useInstantSearch":true,"canUseHPReport":true,"jarussell":true,"ideal":true,"middys":true,"obriens":true,"quickbooks":false,"googleIntegrationEnabled":false,"canUseSiteManagement":true,"checklist":true,"forms":true,"inAppHelp":true,"corysV2":false,"integrationCentre":true,"myobEssentials":false,"onboardingImportCustomers":true,"onboardingInviteTeam":false,"twoFactorAuthenticationEnabled":true,"canCreatePublicFormTemplates":false,"quickbooksV2":true,"ferguspayUK":true,"certificatesEnabled":true,"validateAllNewContactItems":true,"certificateAddonChurnReasonEnabled":false,"isPayRulesEnabled":false,"enableAddUserSlice1":true,"enableNewJobCreation":false,"employeeSMSInvite":true,"UKCertificateOffering":true,"NZFormBasedCerts":false,"OpenAIEmailFeature":false,"JobPhasesRename":false,"recaptchaEnabled":true,"PartnerLogin":true},"userPreferences":{"ENABLE_QUOTE_ACCEPTANCE_NOTIFICATION":true,"ENABLE_SITE_VISIT_ASSIGNED_NOTIFICATION":false,"ENABLE_JOB_TAKEN_OFF_HOLD_NOTIFICATION":false,"ENABLE_JOB_ARCHIVE_REQUEST_NOTIFICATION":true,"ENABLE_MENTIONS_NOTIFICATION":true,"ENABLE_TERMS_ACCEPTED_NOTIFICATION":true,"ENABLE_QUOTE_ASSIGNED_NOTIFICATION":true,"ENABLE_CALENDAR_CHANGE_NOTIFICATION":true,"PURCHASE_ORDER_DELIVERY_TYPE":"pickup","FERGUS_LAB_OPT_IN_MYOB_AR":false,"ENABLE_OVERDUE_TASK_NOTIFICATION":true,"ENABLE_CLOSE_TO_OVERDUE_TASK_NOTIFICATION":true,"ENABLE_UNSTOPPED_TIMER_NOTIFICATION":true,"DEFAULT_STATUS_BOARD_GROUP_IDS":"null","DEFAULT_STATUS_BOARD_EMPLOYEE_IDS":"null","SIGNUP_ROLE":null,"STATUS_BOARD_DETAILED_DESCRIPTIONS":true,"CALENDAR_ALLOW_RESOURCE_COLOURS":true,"CALENDAR_ALLOW_DOUBLE_CLICK_OPEN":true,"CALENDAR_SHOW_UNASSIGNED_COLUMN":true,"CALENDAR_UNASSIGNED_ROW_HEIGHT":null,"DEFAULT_CALENDAR_VIEW_MODE":null,"DEFAULT_CALENDAR_VIEW_TYPE":null,"FERGUS_LAB_OPT_IN_RECURRING_EVENTS":null,"ONBOARDING_SHOW_FOR_HIGH_PERFORMACE_REPORT":true,"SHOW_GOOGLE_EVENTS_IN_CALENDAR":true,"GPS_INTENSITY":null,"ENABLE_CHECKLIST_ASSIGNED_NOTIFICATION":true,"ENABLE_CHECKLIST_UPDATED_NOTIFICATION":true,"ENABLE_CHECKLIST_OVERDUE_NOTIFICATION":true,"LAST_NPS_SENT_AT":null},"uiNavBar":{"unprocessedSupplierDocumentCount":0,"unreadNotificationCount":0},"employees":[],"employeeId":121577,"grantedPermissions":["EDIT_EMPLOYEE_RATES","REPORT_ALL_TIME_SHEET","ARCHIVE_JOB","VOID_CUSTOMER_INVOICE","EDIT_SETTINGS","REPORT_TIMESHEET","REPORT_MERCHANT","REPORT_PROJECT_SUMMARY","EDIT_MARGINS","VOID_MERCHANT_INVOICE","EDIT_MERCHANT_INVOICES","OWNER","CAN_UNLOCK_ACCEPTED_QUOTES","VIEW_ACTIVE_JOB_STATUS_BOARD","LABOUR_JOB_CARD","CAN_SEE_QUOTE","CAN_DELETE_ALL_NOTES","STATUS_BOARD_TOTALS","EDIT_FAVOURITES","STATUS_BOARD_VIEW_ALL","CALENDAR_VIEW_ALL","CALENDAR_VIEW_GROUPS","EXPORT_CUSTOMERS","VIEW_JOB_NOTES_HISTORY","VIEW_INVOICES","VIEW_CUSTOMER_LIST","CAN_ADD_INVOICE_PAYMENT","CAN_CREATE_JOB","CAN_VIEW_CHARGE_OUT_PRICE","CAN_APPROVE_INVOICES","CAN_RECEIVE_QUOTE_ACCEPTANCE_EMAIL_NOTIFICATION","CAN_UNLOCK_SITE_VISIT","CAN_DELETE_ALL_NEWSFEED_ITEMS","CAN_CREATE_CUSTOM_EVENTS","CAN_EDIT_CUSTOM_EVENTS","CAN_RECEIVE_JOB_TAKEN_OFF_HOLD_EMAIL_NOTIFICATION","CAN_ADD_ACTUALS_TO_INVOICED_SITE_VISITS","EDIT_BILLING_SETTINGS","CAN_SEE_FILES","CAN_SEE_PHOTOS","CAN_LOCK_UNLOCK_TIME_ENTRY","CAN_SEND_SMS","CAN_SEE_UNASSIGNED_JOBS","CAN_SEARCH","CAN_REOPEN_COMPLETED_JOB","REPORT_CUSTOMER_INVOICE","REPORT_CUSTOMER_ACTIVITY","CAN_VIEW_MAP","CAN_MOVE_ACTUAL_ITEMS","CAN_VIEW_SIGN_OFFS","CAN_EDIT_SIGN_OFFS","CAN_EDIT_CERTIFICATES","CAN_EDIT_FILES_AND_PHOTOS","CAN_EDIT_NOTES","CAN_VIEW_CALENDAR","EDIT_JOB_CARD","EDIT_SITE_VISIT","FULL_CONTACT_DETAILS","REPORT_RECURRING_EVENTS","TIME_ENTRY_FULL_CONTROL","VIEW_MERCHANT_INVOICES","VIEW_SETUP_WIZARD","VIEW_STOCK_ON_HAND","CAN_CREATE_INVOICE","UNRESTRICTED_SUPPLIER_DOCUMENT_SYNC","VIEW_UNRESTRICTED_JOB_HISTORY","CAN_VIEW_CERTIFICATES","CHECKLIST_TEMPLATE_CREATE_EDIT","CHECKLIST_TEMPLATE_ARCHIVE_DELETE","CHECKLIST_INSTANCE_ADD_REMOVE","CHECKLIST_INSTANCE_MANAGE","CHECKLIST_COMPLETE_UNCOMPLETE_UNASSIGNED_ITEMS","CHECKLIST_COMPLETE_UNCOMPLETE_OWN_GROUP_ASSIGNED_ITEMS","TWO_FACTOR_AUTHENTICATION_ADMIN","REPORT_BUSINESS_PERFORMANCE_DASHBOARD","READ_NEWSFEED_ITEMS","CREATE_NEWSFEED_ITEMS","CREATE_PAYROLL_CSV","READ_SITE_FILES_AND_PHOTOS","UPDATE_SITE_FILES_AND_PHOTOS","READ_SCHEDULED_EVENTS","READ_LABOUR_ACTUALS","READ_GETTING_STARTED","READ_NOTES","CREATE_EMAIL","UPDATE_JOB_CONTACT_DETAIL","DELETE_JOB_CONTACT_DETAIL","ALLOW_LEGACY_APP_USE","RECURRING_JOBS","JOB_STOCK_ON_HAND"],"editablePermissions":["DELETE_WORKS_ORDER","EDIT_EMPLOYEE_RATES","REPORT_ALL_TIME_SHEET","ARCHIVE_JOB","VOID_CUSTOMER_INVOICE","EDIT_SETTINGS","REPORT_TIMESHEET","REPORT_MERCHANT","REPORT_BUSINESS","REPORT_STAFF","REPORT_EMPLOYEE","REPORT_PROJECT_SUMMARY","EDIT_MARGINS","VOID_MERCHANT_INVOICE","EDIT_MERCHANT_INVOICES","CAN_UNLOCK_ACCEPTED_QUOTES","VIEW_ACTIVE_JOB_STATUS_BOARD","LABOUR_JOB_CARD","CAN_SEE_QUOTE","CAN_DELETE_ALL_NOTES","STATUS_BOARD_TOTALS","EDIT_FAVOURITES","STATUS_BOARD_VIEW_ALL","CALENDAR_VIEW_ALL","CALENDAR_VIEW_GROUPS","EXPORT_CUSTOMERS","VIEW_JOB_NOTES_HISTORY","VIEW_INVOICES","VIEW_CUSTOMER_LIST","CAN_ADD_INVOICE_PAYMENT","CAN_CREATE_JOB","CAN_CREATE_SITE_VISIT","CAN_VIEW_CHARGE_OUT_PRICE","CAN_APPROVE_INVOICES","CAN_RECEIVE_QUOTE_ACCEPTANCE_EMAIL_NOTIFICATION","CAN_UNLOCK_SITE_VISIT","CAN_DELETE_ALL_NEWSFEED_ITEMS","CAN_CREATE_CUSTOM_EVENTS","CAN_EDIT_CUSTOM_EVENTS","CAN_RECEIVE_JOB_TAKEN_OFF_HOLD_EMAIL_NOTIFICATION","CAN_ADD_ACTUALS_TO_INVOICED_SITE_VISITS","EDIT_BILLING_SETTINGS","CAN_SEE_FILES","CAN_SEE_PHOTOS","CAN_LOCK_UNLOCK_TIME_ENTRY","CAN_SEND_SMS","CAN_SEE_UNASSIGNED_JOBS","CAN_SEARCH","CAN_REOPEN_COMPLETED_JOB","EDIT_TIERED_PRICING","CAN_MANAGE_OTHER_USERS_TASKS","CAN_EDIT_TASKS","CAN_DELETE_TASKS","REPORT_CUSTOMER_INVOICE","REPORT_CUSTOMER_SOURCE","REPORT_WIP","REPORT_CUSTOMER_ACTIVITY","HEALTH_SAFETY_SETTINGS","CAN_VIEW_MAP","CAN_MOVE_ACTUAL_ITEMS","CAN_VIEW_SIGN_OFFS","CAN_EDIT_SIGN_OFFS","CAN_EDIT_CERTIFICATES","CAN_CREATE_TASKS","CHECKLIST_TEMPLATE_CREATE_EDIT","CHECKLIST_TEMPLATE_ARCHIVE_DELETE","CHECKLIST_INSTANCE_ADD_REMOVE","CHECKLIST_INSTANCE_MANAGE","CHECKLIST_COMPLETE_UNCOMPLETE_UNASSIGNED_ITEMS","CHECKLIST_COMPLETE_UNCOMPLETE_OWN_GROUP_ASSIGNED_ITEMS","FORMS_TEMPLATE_CREATE_EDIT","FORMS_TEMPLATE_ARCHIVE_DELETE","FORMS_INSTANCE_ADD_REMOVE","FORMS_INSTANCE_MANAGE","FORMS_SUBMIT","FORMS_UNSUBMIT","FORMS_INSTANCE_USE_TAGS","FORMS_FILL_UNASSIGNED_INSTANCE","FORMS_FILL_OWN_GROUP_ASSIGNED_INSTANCE","TWO_FACTOR_AUTHENTICATION_ADMIN","REPORT_BUSINESS_PERFORMANCE_DASHBOARD","CAN_PERSIST_EMPLOYEE_LOCATIONS","READ_QUOTE_REPORT","VIEW_RESTRICTED_FEATURES","CAN_VIEW_USER_PROFILES","CAN_VIEW_BUY_NOW_PANEL"],"userPermissionsExplained":{"DELETE_WORKS_ORDER":{"reason":5,"detail":"denied_by_purchase"},"EDIT_EMPLOYEE_RATES":{"reason":7,"detail":"denied_by_settings"},"REPORT_ALL_TIME_SHEET":{"reason":7,"detail":"denied_by_settings"},"ARCHIVE_JOB":{"reason":7,"detail":"denied_by_settings"},"VOID_CUSTOMER_INVOICE":{"reason":7,"detail":"denied_by_settings"},"EDIT_SETTINGS":{"reason":7,"detail":"denied_by_settings"},"REPORT_TIMESHEET":{"reason":7,"detail":"denied_by_settings"},"REPORT_MERCHANT":{"reason":7,"detail":"denied_by_settings"},"REPORT_BUSINESS":{"reason":5,"detail":"denied_by_purchase"},"REPORT_STAFF":{"reason":5,"detail":"denied_by_purchase"},"REPORT_EMPLOYEE":{"reason":5,"detail":"denied_by_purchase"},"REPORT_PROJECT_SUMMARY":{"reason":7,"detail":"denied_by_settings"},"EDIT_MARGINS":{"reason":7,"detail":"denied_by_settings"},"VOID_MERCHANT_INVOICE":{"reason":7,"detail":"denied_by_settings"},"EDIT_MERCHANT_INVOICES":{"reason":7,"detail":"denied_by_settings"},"OWNER":{"reason":7,"detail":"denied_by_settings"},"CAN_UNLOCK_ACCEPTED_QUOTES":{"reason":7,"detail":"denied_by_settings"},"VIEW_ACTIVE_JOB_STATUS_BOARD":{"reason":7,"detail":"denied_by_settings"},"LABOUR_JOB_CARD":{"reason":7,"detail":"denied_by_settings"},"CAN_SEE_QUOTE":{"reason":7,"detail":"denied_by_settings"},"CAN_DELETE_ALL_NOTES":{"reason":7,"detail":"denied_by_settings"},"STATUS_BOARD_TOTALS":{"reason":7,"detail":"denied_by_settings"},"EDIT_FAVOURITES":{"reason":7,"detail":"denied_by_settings"},"STATUS_BOARD_VIEW_ALL":{"reason":7,"detail":"denied_by_settings"},"CALENDAR_VIEW_ALL":{"reason":7,"detail":"denied_by_settings"},"CALENDAR_VIEW_GROUPS":{"reason":7,"detail":"denied_by_settings"},"EXPORT_CUSTOMERS":{"reason":7,"detail":"denied_by_settings"},"VIEW_JOB_NOTES_HISTORY":{"reason":7,"detail":"denied_by_settings"},"VIEW_INVOICES":{"reason":7,"detail":"denied_by_settings"},"VIEW_CUSTOMER_LIST":{"reason":7,"detail":"denied_by_settings"},"CAN_ADD_INVOICE_PAYMENT":{"reason":7,"detail":"denied_by_settings"},"CAN_CREATE_JOB":{"reason":7,"detail":"denied_by_settings"},"CAN_CREATE_SITE_VISIT":{"reason":5,"detail":"denied_by_purchase"},"CAN_VIEW_CHARGE_OUT_PRICE":{"reason":7,"detail":"denied_by_settings"},"CAN_APPROVE_INVOICES":{"reason":7,"detail":"denied_by_settings"},"CAN_RECEIVE_QUOTE_ACCEPTANCE_EMAIL_NOTIFICATION":{"reason":7,"detail":"denied_by_settings"},"CAN_UNLOCK_SITE_VISIT":{"reason":7,"detail":"denied_by_settings"},"CAN_DELETE_ALL_NEWSFEED_ITEMS":{"reason":7,"detail":"denied_by_settings"},"CAN_CREATE_CUSTOM_EVENTS":{"reason":7,"detail":"denied_by_settings"},"CAN_EDIT_CUSTOM_EVENTS":{"reason":7,"detail":"denied_by_settings"},"CAN_RECEIVE_JOB_TAKEN_OFF_HOLD_EMAIL_NOTIFICATION":{"reason":7,"detail":"denied_by_settings"},"CAN_ADD_ACTUALS_TO_INVOICED_SITE_VISITS":{"reason":7,"detail":"denied_by_settings"},"EDIT_BILLING_SETTINGS":{"reason":7,"detail":"denied_by_settings"},"CAN_SEE_FILES":{"reason":7,"detail":"denied_by_settings"},"CAN_SEE_PHOTOS":{"reason":7,"detail":"denied_by_settings"},"CAN_LOCK_UNLOCK_TIME_ENTRY":{"reason":7,"detail":"denied_by_settings"},"CAN_SEND_SMS":{"reason":7,"detail":"denied_by_settings"},"CAN_SEE_UNASSIGNED_JOBS":{"reason":7,"detail":"denied_by_settings"},"CAN_SEARCH":{"reason":7,"detail":"denied_by_settings"},"CAN_REOPEN_COMPLETED_JOB":{"reason":7,"detail":"denied_by_settings"},"EDIT_TIERED_PRICING":{"reason":5,"detail":"denied_by_purchase"},"CAN_MANAGE_OTHER_USERS_TASKS":{"reason":5,"detail":"denied_by_purchase"},"CAN_EDIT_TASKS":{"reason":5,"detail":"denied_by_purchase"},"CAN_DELETE_TASKS":{"reason":5,"detail":"denied_by_purchase"},"REPORT_CUSTOMER_INVOICE":{"reason":7,"detail":"denied_by_settings"},"REPORT_CUSTOMER_SOURCE":{"reason":5,"detail":"denied_by_purchase"},"REPORT_WIP":{"reason":5,"detail":"denied_by_purchase"},"REPORT_CUSTOMER_ACTIVITY":{"reason":7,"detail":"denied_by_settings"},"HEALTH_SAFETY_SETTINGS":{"reason":5,"detail":"denied_by_purchase"},"CAN_VIEW_MAP":{"reason":7,"detail":"denied_by_settings"},"CAN_MOVE_ACTUAL_ITEMS":{"reason":7,"detail":"denied_by_settings"},"CAN_VIEW_SIGN_OFFS":{"reason":7,"detail":"denied_by_settings"},"CAN_EDIT_SIGN_OFFS":{"reason":7,"detail":"denied_by_settings"},"CAN_APPLY_PAY_RULE_OVERRIDES":{"reason":5,"detail":"denied_by_purchase"},"CAN_EDIT_CERTIFICATES":{"reason":7,"detail":"denied_by_settings"},"CAN_EDIT_FILES_AND_PHOTOS":{"reason":8,"detail":"granted_by_user_type"},"CAN_EDIT_NOTES":{"reason":8,"detail":"granted_by_user_type"},"CAN_VIEW_CALENDAR":{"reason":8,"detail":"granted_by_user_type"},"CAN_VIEW_PURCHASE_ORDERS":{"reason":5,"detail":"denied_by_purchase"},"CAN_VIEW_TASKS":{"reason":5,"detail":"denied_by_purchase"},"EDIT_JOB_CARD":{"reason":8,"detail":"granted_by_user_type"},"EDIT_SITE_VISIT":{"reason":8,"detail":"granted_by_user_type"},"FULL_CONTACT_DETAILS":{"reason":8,"detail":"granted_by_user_type"},"REPORT_RECURRING_EVENTS":{"reason":8,"detail":"granted_by_user_type"},"TIME_ENTRY_FULL_CONTROL":{"reason":8,"detail":"granted_by_user_type"},"VIEW_MERCHANT_INVOICES":{"reason":8,"detail":"granted_by_user_type"},"VIEW_SETUP_WIZARD":{"reason":8,"detail":"granted_by_user_type"},"VIEW_STOCK_ON_HAND":{"reason":8,"detail":"granted_by_user_type"},"CAN_CREATE_INVOICE":{"reason":8,"detail":"granted_by_user_type"},"UNRESTRICTED_SUPPLIER_DOCUMENT_SYNC":{"reason":6,"detail":"granted_by_purchase"},"VIEW_UNRESTRICTED_JOB_HISTORY":{"reason":6,"detail":"granted_by_purchase"},"CAN_CREATE_TASKS":{"reason":5,"detail":"denied_by_purchase"},"CAN_VIEW_CERTIFICATES":{"reason":8,"detail":"granted_by_user_type"},"CHECKLIST_TEMPLATE_CREATE_EDIT":{"reason":7,"detail":"denied_by_settings"},"CHECKLIST_TEMPLATE_ARCHIVE_DELETE":{"reason":7,"detail":"denied_by_settings"},"CHECKLIST_INSTANCE_ADD_REMOVE":{"reason":7,"detail":"denied_by_settings"},"CHECKLIST_INSTANCE_MANAGE":{"reason":7,"detail":"denied_by_settings"},"CHECKLIST_COMPLETE_UNCOMPLETE_UNASSIGNED_ITEMS":{"reason":7,"detail":"denied_by_settings"},"CHECKLIST_COMPLETE_UNCOMPLETE_OWN_GROUP_ASSIGNED_ITEMS":{"reason":7,"detail":"denied_by_settings"},"FORMS_TEMPLATE_CREATE_EDIT":{"reason":5,"detail":"denied_by_purchase"},"FORMS_TEMPLATE_ARCHIVE_DELETE":{"reason":5,"detail":"denied_by_purchase"},"FORMS_INSTANCE_ADD_REMOVE":{"reason":5,"detail":"denied_by_purchase"},"FORMS_INSTANCE_MANAGE":{"reason":5,"detail":"denied_by_purchase"},"FORMS_SUBMIT":{"reason":5,"detail":"denied_by_purchase"},"FORMS_UNSUBMIT":{"reason":5,"detail":"denied_by_purchase"},"FORMS_INSTANCE_USE_TAGS":{"reason":5,"detail":"denied_by_purchase"},"FORMS_FILL_UNASSIGNED_INSTANCE":{"reason":5,"detail":"denied_by_purchase"},"FORMS_FILL_OWN_GROUP_ASSIGNED_INSTANCE":{"reason":5,"detail":"denied_by_purchase"},"TWO_FACTOR_AUTHENTICATION_ADMIN":{"reason":7,"detail":"denied_by_settings"},"REPORT_BUSINESS_PERFORMANCE_DASHBOARD":{"reason":7,"detail":"denied_by_settings"},"CAN_PERSIST_EMPLOYEE_LOCATIONS":{"reason":5,"detail":"denied_by_purchase"},"READ_NEWSFEED_ITEMS":{"reason":8,"detail":"granted_by_user_type"},"CREATE_NEWSFEED_ITEMS":{"reason":8,"detail":"granted_by_user_type"},"CREATE_PAYROLL_CSV":{"reason":8,"detail":"granted_by_user_type"},"READ_SITE_FILES_AND_PHOTOS":{"reason":8,"detail":"granted_by_user_type"},"UPDATE_SITE_FILES_AND_PHOTOS":{"reason":8,"detail":"granted_by_user_type"},"READ_SCHEDULED_EVENTS":{"reason":8,"detail":"granted_by_user_type"},"READ_LABOUR_ACTUALS":{"reason":8,"detail":"granted_by_user_type"},"READ_QUOTE_REPORT":{"reason":5,"detail":"denied_by_purchase"},"READ_GETTING_STARTED":{"reason":8,"detail":"granted_by_user_type"},"READ_NOTES":{"reason":8,"detail":"granted_by_user_type"},"CREATE_EMAIL":{"reason":8,"detail":"granted_by_user_type"},"UPDATE_JOB_CONTACT_DETAIL":{"reason":8,"detail":"granted_by_user_type"},"DELETE_JOB_CONTACT_DETAIL":{"reason":8,"detail":"granted_by_user_type"},"ALLOW_LEGACY_APP_USE":{"reason":8,"detail":"granted_by_user_type"},"VIEW_RESTRICTED_FEATURES":{"reason":5,"detail":"denied_by_purchase"},"RECURRING_JOBS":{"reason":8,"detail":"granted_by_user_type"},"CAN_VIEW_USER_PROFILES":{"reason":6,"detail":"denied_by_purchase"},"LEGACY_PLAN":{"reason":5,"detail":"denied_by_purchase"},"STANDARD_INTEGRATIONS":{"reason":5,"detail":"denied_by_purchase"},"PREMIUM_INTEGRATIONS":{"reason":5,"detail":"denied_by_purchase"},"CAN_VIEW_BUY_NOW_PANEL":{"reason":6,"detail":"denied_by_purchase"},"NON_ESSENTIALS_PLAN":{"reason":5,"detail":"denied_by_purchase"},"JOB_STOCK_ON_HAND":{"reason":8,"detail":"granted_by_user_type"}},"company":{"id":66521,"name":"Test","guid":"a6d03610-ee4e-4711-8655-3b996125c419","dateCreated":"2023-10-03T00:31:45Z","contact":{"id":40487096,"contact_type":"COMP","first_name":null,"last_name":null,"company_name":null,"position":null,"address_1":null,"address_2":null,"address_suburb":null,"address_city":null,"address_region":null,"address_country":"Australia","address_postcode":null,"latitude":null,"longitude":null,"contact_items":[{"id":31305709,"contact_type":"phone","contact_val":"0473473088"},{"id":31305710,"contact_type":"email","contact_val":"curt.t.hyland@gmail.com"}]},"isTrialExpired":false,"trialDaysRemaining":14,"usesXero":false,"usesMyob":false,"usesQuickbooks":false,"previousImports":[],"painpoint":"CreateJob","countryCode":"AU","isEU":false,"partner":null,"googleIntegrationEnabled":false,"checklistsEnabled":false,"onboardingEnabled":true,"onboardingLinksEnabled":true,"accountingVendorName":"","timezone":"Australia\/Sydney","currency":{"symbol":"$","name":"Australian Dollar"},"accountingPackage":null,"isAdvisorLogin":false,"isFergusStaffLogin":false,"locked_at":null,"salesforce_id":"001A70000061RSRIA2","hasChurned":false,"ukCISTaxEnabled":false,"essentialsProTrialSwitchingEnabled":false},"advisorCompanies":[],"countries":{"AF":"Afghanistan","AL":"Albania","DZ":"Algeria","AS":"American Samoa","AD":"Andorra","AO":"Angola","AI":"Anguilla","AQ":"Antarctica","AG":"Antigua and Barbuda","AR":"Argentina","AM":"Armenia","AW":"Aruba","AU":"Australia","AT":"Austria","AZ":"Azerbaijan","BS":"Bahamas","BH":"Bahrain","BD":"Bangladesh","BB":"Barbados","BY":"Belarus","BE":"Belgium","BZ":"Belize","BJ":"Benin","BM":"Bermuda","BT":"Bhutan","BO":"Bolivia","BA":"Bosnia and Herzegovina","BW":"Botswana","BV":"Bouvet Island","BR":"Brazil","IO":"British Indian Ocean Territory","BN":"Brunei Darussalam","BG":"Bulgaria","BF":"Burkina Faso","BI":"Burundi","KH":"Cambodia","CM":"Cameroon","CA":"Canada","CV":"Cape Verde","KY":"Cayman Islands","CF":"Central African Republic","TD":"Chad","CL":"Chile","CN":"China","CX":"Christmas Island","CC":"Cocos (Keeling) Islands","CO":"Colombia","KM":"Comoros","CG":"Congo","CD":"Congo, The Democratic Republic of The","CK":"Cook Islands","CR":"Costa Rica","CI":"Cote D'ivoire","HR":"Croatia","CU":"Cuba","CY":"Cyprus","CZ":"Czech Republic","DK":"Denmark","DJ":"Djibouti","DM":"Dominica","DO":"Dominican Republic","EC":"Ecuador","EG":"Egypt","SV":"El Salvador","AX":"\u0415land Islands","GQ":"Equatorial Guinea","ER":"Eritrea","EE":"Estonia","ET":"Ethiopia","FK":"Falkland Islands (Malvinas)","FO":"Faroe Islands","FJ":"Fiji","FI":"Finland","FR":"France","GF":"French Guiana","PF":"French Polynesia","TF":"French Southern Territories","GA":"Gabon","GM":"Gambia","GE":"Georgia","DE":"Germany","GH":"Ghana","GI":"Gibraltar","GR":"Greece","GL":"Greenland","GD":"Grenada","GP":"Guadeloupe","GU":"Guam","GT":"Guatemala","GG":"Guernsey","GN":"Guinea","GW":"Guinea-bissau","GY":"Guyana","HT":"Haiti","HM":"Heard Island and Mcdonald Islands","VA":"Holy See (Vatican City State)","HN":"Honduras","HK":"Hong Kong","HU":"Hungary","IS":"Iceland","IN":"India","ID":"Indonesia","IR":"Iran, Islamic Republic of","IQ":"Iraq","IE":"Ireland","IM":"Isle of Man","IL":"Israel","IT":"Italy","JM":"Jamaica","JP":"Japan","JE":"Jersey","JO":"Jordan","KZ":"Kazakhstan","KE":"Kenya","KI":"Kiribati","KP":"Korea, Democratic People's Republic of","KR":"Korea, Republic of","KW":"Kuwait","KG":"Kyrgyzstan","LA":"Lao People's Democratic Republic","LV":"Latvia","LB":"Lebanon","LS":"Lesotho","LR":"Liberia","LY":"Libyan Arab Jamahiriya","LI":"Liechtenstein","LT":"Lithuania","LU":"Luxembourg","MO":"Macao","MK":"Macedonia, The Former Yugoslav Republic of","MG":"Madagascar","MW":"Malawi","MY":"Malaysia","MV":"Maldives","ML":"Mali","MT":"Malta","MH":"Marshall Islands","MQ":"Martinique","MR":"Mauritania","MU":"Mauritius","YT":"Mayotte","MX":"Mexico","FM":"Micronesia, Federated States of","MD":"Moldova, Republic of","MC":"Monaco","MN":"Mongolia","ME":"Montenegro","MS":"Montserrat","MA":"Morocco","MZ":"Mozambique","MM":"Myanmar","NA":"Namibia","NR":"Nauru","NP":"Nepal","NL":"Netherlands","AN":"Netherlands Antilles","NC":"New Caledonia","NZ":"New Zealand","NI":"Nicaragua","NE":"Niger","NG":"Nigeria","NU":"Niue","NF":"Norfolk Island","MP":"Northern Mariana Islands","NO":"Norway","OM":"Oman","PK":"Pakistan","PW":"Palau","PS":"Palestinian Territory, Occupied","PA":"Panama","PG":"Papua New Guinea","PY":"Paraguay","PE":"Peru","PH":"Philippines","PN":"Pitcairn","PL":"Poland","PT":"Portugal","PR":"Puerto Rico","QA":"Qatar","RE":"Reunion","RO":"Romania","RU":"Russian Federation","RW":"Rwanda","SH":"Saint Helena","KN":"Saint Kitts and Nevis","LC":"Saint Lucia","PM":"Saint Pierre and Miquelon","VC":"Saint Vincent and The Grenadines","WS":"Samoa","SM":"San Marino","ST":"Sao Tome and Principe","SA":"Saudi Arabia","SN":"Senegal","RS":"Serbia","SC":"Seychelles","SL":"Sierra Leone","SG":"Singapore","SK":"Slovakia","SI":"Slovenia","SB":"Solomon Islands","SO":"Somalia","ZA":"South Africa","GS":"South Georgia and The South Sandwich Islands","ES":"Spain","LK":"Sri Lanka","SD":"Sudan","SR":"Suriname","SJ":"Svalbard and Jan Mayen","SZ":"Swaziland","SE":"Sweden","CH":"Switzerland","SY":"Syrian Arab Republic","TW":"Taiwan, Province of China","TJ":"Tajikistan","TZ":"Tanzania, United Republic of","TH":"Thailand","TL":"Timor-leste","TG":"Togo","TK":"Tokelau","TO":"Tonga","TT":"Trinidad and Tobago","TN":"Tunisia","TR":"Turkey","TM":"Turkmenistan","TC":"Turks and Caicos Islands","TV":"Tuvalu","UG":"Uganda","UA":"Ukraine","AE":"United Arab Emirates","GB":"United Kingdom","US":"United States","UM":"United States Minor Outlying Islands","UY":"Uruguay","UZ":"Uzbekistan","VU":"Vanuatu","VE":"Venezuela","VN":"Viet Nam","VG":"Virgin Islands, British","VI":"Virgin Islands, U.S.","WF":"Wallis and Futuna","EH":"Western Sahara","YE":"Yemen","ZM":"Zambia","ZW":"Zimbabwe"},"currencies":{"American Samoa":"USD","Andorra":"EUR","Australia":"AUD","Austria":"EUR","Belgium":"EUR","Bhutan":"INR","Bouvet Island":"NOK","Brazil":"BRL","British Indian Ocean Territory":"USD","Canada":"CAD","Christmas Island":"AUD","Cocos (Keeling) Islands":"AUD","Cook Islands":"NZD","Cyprus":"EUR","Czech Republic":"CZK","Denmark":"DKK","Ecuador":"USD","El Salvador":"USD","\u0415land Islands":"EUR","Estonia":"EUR","Faroe Islands":"DKK","Finland":"EUR","France":"EUR","French Guiana":"EUR","French Southern Territories":"EUR","Germany":"EUR","Greece":"EUR","Greenland":"DKK","Guadeloupe":"EUR","Guam":"USD","Heard Island and Mcdonald Islands":"AUD","Holy See (Vatican City State)":"EUR","Hong Kong":"HKD","Hungary":"HUF","India":"INR","Ireland":"EUR","Isle of Man":"GBP","Israel":"ILS","Italy":"EUR","Japan":"JPY","Jersey":"GBP","Kiribati":"AUD","Latvia":"EUR","Liechtenstein":"CHF","Lithuania":"EUR","Luxembourg":"EUR","Malaysia":"MYR","Malta":"EUR","Marshall Islands":"USD","Martinique":"EUR","Mayotte":"EUR","Mexico":"MXN","Micronesia":"USD","Monaco":"EUR","Montenegro":"EUR","Namibia":"NAD","Nauru":"AUD","Netherlands":"EUR","New Zealand":"NZD","Niue":"NZD","Norfolk Island":"AUD","Northern Mariana Islands":"USD","Norway":"NOK","Palau":"USD","Philippines":"PHP","Pitcairn":"NZD","Poland":"PLN","Portugal":"EUR","Puerto Rico":"USD","Reunion":"EUR","Saint Pierre and Miquelon":"EUR","Samoa":"EUR","San Marino":"EUR","Singapore":"SGD","Slovakia":"EUR","Slovenia":"EUR","South Africa":"ZAR","South Georgia and The South Sandwich Islands":"GBP","Spain":"EUR","Svalbard and Jan Mayen":"NOK","Sweden":"SEK","Switzerland":"CHF","Taiwan":"TWD","Thailand":"THB","Timor-leste":"USD","Tokelau":"NZD","Turkey":"TRY","Turks and Caicos Islands":"USD","Tuvalu":"AUD","United Arab Emirates":"AED","United Kingdom":"GBP","United States":"USD","United States Minor Outlying Islands":"USD","Viet Nam":"VND","Virgin Islands":"USD","Zimbabwe":"USD","Papua New Guinea":"PGK"},"companyPlan":{"details":{"id":18,"nameId":"Essentials-Trial","name":"Essentials Trial","tagLine":"Explore a cheaper and simpler version of Fergus","isActive":true,"isFree":false,"isTrial":true,"isLegacy":false},"changeRequest":false,"isTrial":true,"limits":{"renewalDate":"2023-11-01","items":[]}},"companyOffers":[],"activeOffers":[],"employeesWithGroups":{"employees":[{"id":121577,"firstName":"Curtis","lastName":"","fullName":"Curtis ","userType":{"displayName":"Full User","name":"full_user"},"email":"curt.t.hyland@gmail.com","colour":"040405","showInCalendar":true,"customAvatar":false,"avatarUrl":"\/avatar\/get\/121577\/240","permissions":["EDIT_EMPLOYEE_RATES","REPORT_ALL_TIME_SHEET","ARCHIVE_JOB","VOID_CUSTOMER_INVOICE","EDIT_SETTINGS","REPORT_TIMESHEET","REPORT_MERCHANT","REPORT_PROJECT_SUMMARY","EDIT_MARGINS","VOID_MERCHANT_INVOICE","EDIT_MERCHANT_INVOICES","OWNER","CAN_UNLOCK_ACCEPTED_QUOTES","VIEW_ACTIVE_JOB_STATUS_BOARD","LABOUR_JOB_CARD","CAN_SEE_QUOTE","CAN_DELETE_ALL_NOTES","STATUS_BOARD_TOTALS","EDIT_FAVOURITES","STATUS_BOARD_VIEW_ALL","CALENDAR_VIEW_ALL","CALENDAR_VIEW_GROUPS","EXPORT_CUSTOMERS","VIEW_JOB_NOTES_HISTORY","VIEW_INVOICES","VIEW_CUSTOMER_LIST","CAN_ADD_INVOICE_PAYMENT","CAN_CREATE_JOB","CAN_VIEW_CHARGE_OUT_PRICE","CAN_APPROVE_INVOICES","CAN_RECEIVE_QUOTE_ACCEPTANCE_EMAIL_NOTIFICATION","CAN_UNLOCK_SITE_VISIT","CAN_DELETE_ALL_NEWSFEED_ITEMS","CAN_CREATE_CUSTOM_EVENTS","CAN_EDIT_CUSTOM_EVENTS","CAN_RECEIVE_JOB_TAKEN_OFF_HOLD_EMAIL_NOTIFICATION","CAN_ADD_ACTUALS_TO_INVOICED_SITE_VISITS","EDIT_BILLING_SETTINGS","CAN_SEE_FILES","CAN_SEE_PHOTOS","CAN_LOCK_UNLOCK_TIME_ENTRY","CAN_SEND_SMS","CAN_SEE_UNASSIGNED_JOBS","CAN_SEARCH","CAN_REOPEN_COMPLETED_JOB","REPORT_CUSTOMER_INVOICE","REPORT_CUSTOMER_ACTIVITY","CAN_VIEW_MAP","CAN_MOVE_ACTUAL_ITEMS","CAN_VIEW_SIGN_OFFS","CAN_EDIT_SIGN_OFFS","CAN_EDIT_CERTIFICATES","CAN_EDIT_FILES_AND_PHOTOS","CAN_EDIT_NOTES","CAN_VIEW_CALENDAR","EDIT_JOB_CARD","EDIT_SITE_VISIT","FULL_CONTACT_DETAILS","REPORT_RECURRING_EVENTS","TIME_ENTRY_FULL_CONTROL","VIEW_MERCHANT_INVOICES","VIEW_SETUP_WIZARD","VIEW_STOCK_ON_HAND","CAN_CREATE_INVOICE","UNRESTRICTED_SUPPLIER_DOCUMENT_SYNC","VIEW_UNRESTRICTED_JOB_HISTORY","CAN_VIEW_CERTIFICATES","CHECKLIST_TEMPLATE_CREATE_EDIT","CHECKLIST_TEMPLATE_ARCHIVE_DELETE","CHECKLIST_INSTANCE_ADD_REMOVE","CHECKLIST_INSTANCE_MANAGE","CHECKLIST_COMPLETE_UNCOMPLETE_UNASSIGNED_ITEMS","CHECKLIST_COMPLETE_UNCOMPLETE_OWN_GROUP_ASSIGNED_ITEMS","TWO_FACTOR_AUTHENTICATION_ADMIN","REPORT_BUSINESS_PERFORMANCE_DASHBOARD","READ_NEWSFEED_ITEMS","CREATE_NEWSFEED_ITEMS","CREATE_PAYROLL_CSV","READ_SITE_FILES_AND_PHOTOS","UPDATE_SITE_FILES_AND_PHOTOS","READ_SCHEDULED_EVENTS","READ_LABOUR_ACTUALS","READ_GETTING_STARTED","READ_NOTES","CREATE_EMAIL","UPDATE_JOB_CONTACT_DETAIL","DELETE_JOB_CONTACT_DETAIL","ALLOW_LEGACY_APP_USE","RECURRING_JOBS","JOB_STOCK_ON_HAND"],"userLastLogin":"2023-10-03T06:24:44Z","employeeLastLogin":"2023-10-03T06:24:44Z","created":"2023-10-03T00:31:46Z","banned":false,"groupIds":[],"preferences":{"enable_quote_acceptance_notification":true,"enable_site_visit_assigned_notification":false,"enable_job_taken_off_hold_notification":false,"enable_job_archive_request_notification":true,"enable_mentions_notification":true,"enable_terms_accepted_notification":true,"enable_overdue_task_notification":true,"enable_close_to_overdue_task_notification":true,"enable_calendar_change_notification":true,"enable_unstopped_timer_notification":true,"show_detailed_status_board_help_text":true,"enable_checklist_assigned_notification":true,"enable_checklist_updated_notification":true,"enable_checklist_overdue_notification":true},"showInAssignedList":true,"contact":{"id":40487097,"contact_type":"EMPL","first_name":"Curtis","last_name":"","company_name":null,"position":null,"address_1":null,"address_2":null,"address_suburb":null,"address_city":null,"address_region":null,"address_country":null,"address_postcode":null,"latitude":null,"longitude":null,"contact_items":[{"id":31305711,"contact_type":"email","contact_val":"curt.t.hyland@gmail.com"},{"id":31305712,"contact_type":"phone","contact_val":"0473473088"}]},"payRate":0,"chargeoutRate":0,"payRule":null,"certification":[],"dateDisabled":null,"signatureId":null,"showRequestDemoMain":true,"showRequestDemoSecondary":true,"googleStatus":null,"isRestrictedFeaturesVisible":false,"lastInvitationAt":"2023-10-03T00:31:47Z","invitationAcceptedAt":"2023-10-03T06:18:55Z","hasTmpPassword":true}],"employeeGroups":[],"employeeGroupMemberships":[]},"tasks":[],"employeeGroups":[]});
+
+</script>
+
+<!-- According to Google Tag Manager, first thing to do after the body tag, hence this placement -->
+<!-- Google Tag Manager (noscript) -->
+<!-- Actually our website will not run without Javascript so the following <noscript> is useless -->
+<!--
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PPBLX5N" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+-->
+<!-- End Google Tag Manager (noscript) -->
+
+	    <div id="toasts_mount_node"></div>
+<div id="banners_mount_node"></div>
+<script>
+    renderToasts({}, document.getElementById('toasts_mount_node'));
+    renderBanners({}, document.getElementById('banners_mount_node'));
+</script>
+
+<script>
+    (function () {
+        socketManager.subscribe('NEW_NOTIFICATION', function(notification){
+            console.log('New Toast received via socket');
+            createToast({
+                title : notification.primary_text,
+                message : notification.secondary_text,
+                employeeId : notification.initiated_by,
+                type : (['primary', 'success', 'warning', 'danger'][notification.priority]),
+                dangerouslySetInnerHTML : true,
+                url : notification.url
+            })
+        });
+    })();
+</script>
+    <div id="react-app"></div>
+<script>
+    !(function (d) {
+
+        function renderApp_() {
+            renderApp(d.querySelector("#react-app"), {"pageTitle":null,"siteTitle":"Fergus"});
+        }
+
+        function postponeRenderApp_() {
+            d.removeEventListener('DOMContentLoaded', renderApp_);
+            renderApp_();
+        }
+
+        d.readyState === "loading" ? d.addEventListener("DOMContentLoaded", postponeRenderApp_) : renderApp_();
+    })(document);
+</script>
+
+    <div id="content_wrapper" style="" onmouseup="return">
+        <div id="rendered_by_server_staff" style="">
+            <div id="react-app"></div>
+<script>
+    !(function (d) {
+
+        function renderApp_() {
+            renderApp(d.querySelector("#react-app"), {"pageTitle":null,"siteTitle":"Fergus"});
+        }
+
+        function postponeRenderApp_() {
+            d.removeEventListener('DOMContentLoaded', renderApp_);
+            renderApp_();
+        }
+
+        d.readyState === "loading" ? d.addEventListener("DOMContentLoaded", postponeRenderApp_) : renderApp_();
+    })(document);
+</script>
+
+        </div>
+    </div>
+
+	
+	
+     <!-- don‘t show logo if logged out. -->
+        <div class='toc_footer smallFont'>
+            <a href="/en/terms-of-service" target='_blank' class="link" id="terms-of-service">Terms of Service</a> | <a href="/en/privacy-policy" target='_blank' class="link" id="privacy-policy">Privacy Policy</a>
+        </div>
+    	<script>
+	//if not in iframe
+	if (top === self){
+		window.intercomSettings = {"app_id":"tbx03t1n","user_hash":"721077f7f5792868367b4381f458bf10e670b773b1d4b06855feac8e3252c307","name":"Curtis ","user_id":"fda49108-9f60-41a5-9ee1-68a46a2ca3b9","email":"curt.t.hyland@gmail.com","Login":"curt.t.hyland@gmail.com","created_at":1696293106,"Employee ID":121577,"Account Type":"full_user","Site":"Fergus_live","Is Owner":true,"company":{"name":"Test","id":"a6d03610-ee4e-4711-8655-3b996125c419","monthly_spend":55,"created_at":1696293105,"Company Instance ID":66521,"Country":"Australia","State":null,"Postcode":null,"On Trial":true,"Trial Expires":1697502705,"Credit Card Added":false,"Industry Name":"Plumbing","Active Employees":1,"Reported Staff Count":6,"Number of Jobs":0,"Number of Invoices":0,"Connected to Xero":false,"Connected to MYOB":false,"Connected to Quickbooks":false,"Uploaded Customers":false,"Has Pricebook":false,"Address":"","Fergus Pay Provider":null,"Fergus Pay Eligible":false,"Fergus Pay KYC Approved":false,"Has Connected To Plumbing World":false,"Uses Plumbing World Invoices":false,"Uses Mico Invoices":false,"Uses Cory Invoices":false,"SMS Invoice Reminders on":false,"Email Invoice Reminders on":false,"Autorenew SMS Credit enabled":false,"Has Connected To Mico":false,"Has Connected To Corys":false,"Has Connected To Chesters":false,"Has Connected To JA Russell":false,"Uses Chesters Invoices":false,"Uses JA Russell Invoices":false,"Feature Flag: Sms Schedule Reminders":true,"Feature Flag: Site Management":true,"Is Paying":false,"Date Credit Card First Entered":null,"SF Account URL":"https:\/\/fergusapp.lightning.force.com\/lightning\/r\/Account\/001A70000061RSRIA2\/view","Onboarding Segment":"Trial Active","Accounting Software":"","Plan":"Essentials-Trial"}};
+		(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',intercomSettings);}else{var d=document;var i=function(){i.c(arguments)};i.q=[];i.c=function(args){i.q.push(args)};w.Intercom=i;function l(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/tbx03t1n';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);}if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})()
+
+		window.addEventListener("message", (event) => {
+			if (event.origin !== location.origin || event.data.type !== "Intercom")
+				return;
+			Intercom(...event.data.params);
+		}, false);
+	}
+</script>
+    <script>
+	// This survey is shown on any page where intercom is setup 1 week after signup
+	</script>
+
+	<script>
+        fg_global.bind_chat_buttons();
+	</script>
+
+	        	
+			<script>
+	!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+	n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+	n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+	t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+	document,'script','https://connect.facebook.net/en_US/fbevents.js');
+
+			// add extra params if they are logged in.
+		fbq('init', '1711554295770749', {"em":"curt.t.hyland@gmail.com","fn":"Curtis"});
+	
+	fbq('track', "PageView");</script>
+	<noscript><img height="1" width="1" style="display:none"
+	src="https://www.facebook.com/tr?id=1711554295770749&ev=PageView&noscript=1"
+	/></noscript>
+	
+	<script type="text/javascript">
+	/* <![CDATA[ */
+	var google_conversion_id = 999852111;
+	var google_custom_params = window.google_tag_params;
+	var google_remarketing_only = true;
+	/* ]]> */
+	</script>
+	<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+	</script>
+	<noscript>
+	<div style="display:inline;">
+	<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/999852111/?value=0&amp;guid=ON&amp;script=0"/>
+	</div>
+	</noscript>
+
+    <!--fragment #parcel-includes-body|v2023-09-12.024558 [start]-->
+<!--fragment #parcel-includes-body|v2023-09-12.024558 [end]--></body>
+</html>
